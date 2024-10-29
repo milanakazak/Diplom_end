@@ -1,0 +1,208 @@
+.main-card {
+    padding: 100px 400px;
+    height: 100vh;
+}
+
+.main-card-img-wrap {
+    -webkit-box-shadow: 4px 4px 13px 2px rgba(124, 124, 124, 0.42);
+    -moz-box-shadow: 4px 4px 13px 2px rgba(162, 162, 162, 0.42);
+    box-shadow: 4px 4px 13px 2px rgba(88, 88, 88, 0.42);
+    height: 85vh;
+    border-radius: 30px;
+    padding-right: 20px;
+    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.content {
+    position: relative;
+    width: 50%;
+}
+.main-card-img {
+    height: 100%;
+}
+.post-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px 0 0 30px;
+    overflow: hidden;
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.main-card-text-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: column;
+    & h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+}
+.main-card-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0;
+    .infoLeft {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        .main-card-options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            & span {
+                margin-right: 10px;
+            }
+            .fa-ellipsis-vertical {
+                color: var(--color-button-text);
+                font-size: 20px;
+            }
+        }
+        .main-card-likes {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            .likes {
+                border: none;
+                background-color: transparent;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                & p {
+                    color: var(--color-button-text);
+                }
+            }
+        }
+    }
+    .infoRight {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        .main-card-board {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            gap: 5px;
+
+            .faAngleDown {
+                font-size: 20px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.savePost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .successMessage {
+        position: absolute;
+        top: -15px;
+        font-size: 12px;
+    }
+}
+
+.main-card-descr {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.main-card-author {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    .author {
+        display: flex;
+        align-items: center;
+        .main-card-author-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 10px;
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .main-card-author-name {
+            font-size: 18px;
+        }
+    }
+}
+.comment {
+    position: relative;
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(204, 204, 204, 0.34) inset;
+    -moz-box-shadow: 0px 0px 10px 1px rgba(204, 204, 204, 0.34) inset;
+    box-shadow: 0px 0px 10px 1px rgba(204, 204, 204, 0.34) inset;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 30px;
+    padding: 20px;
+    & h2 {
+        font-size: 18px;
+        color: var(--input-text-color);
+        margin-bottom: 10px;
+    }
+    .scrollable-container {
+        max-height: 400px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .commentForm {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        & input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 30px;
+            outline: none;
+            background-color: var(--bg-inp);
+            color: var(--input-text-color);
+            font-size: 14px;
+            &:focus {
+                border: 1px solid var(--input-border);
+            }
+        }
+        & button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 14px;
+            background-color: var(--input-border);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            &:hover {
+                background-color: red;
+                transition: background-color 0.3s ease-in-out;
+            }
+        }
+    }
+}

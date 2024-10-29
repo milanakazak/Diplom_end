@@ -1,0 +1,29 @@
+.content-form-wrap {
+    width: 400px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & h3 {
+        font-size: 24px;
+        text-align: center;
+        color: #3d3d3d;
+        margin-bottom: 10px;
+    }
+    & p {
+        width: 200px;
+        font-size: 14px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #8b8b8b;
+    }
+    .cont-form-wrap {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

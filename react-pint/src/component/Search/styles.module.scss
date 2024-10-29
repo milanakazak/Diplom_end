@@ -1,0 +1,17 @@
+.search-wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    max-width: 1440px;
+    height: 48px;
+    background-color: var(--input-bg-spec);
+    border-radius: 40px;
+    margin: 0 8px;
+}
+.faMagnifyingGlass {
+    font-size: 16px;
+    color: #767676;
+    padding-right: 5px;
+}

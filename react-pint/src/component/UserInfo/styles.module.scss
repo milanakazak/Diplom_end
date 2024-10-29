@@ -1,0 +1,25 @@
+.userInfo {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50px;
+    .userInfoAva {
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--input-border);
+        background: var(--bg-color-button-hover);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-button-text);
+    }
+    & span {
+        font-size: 16px;
+        text-transform: capitalize;
+        color: var(--color-button-text);
+        margin-left: 5px;
+    }
+}

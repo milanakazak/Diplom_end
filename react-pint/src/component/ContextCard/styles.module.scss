@@ -1,0 +1,18 @@
+.contextCard {
+    border: 1px solid var(--input-border);
+    border-radius: 17px;
+    overflow: hidden;
+    width: 200px;
+}
+
+.contextCardWrap {
+    padding: 10px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--bg-color);
+    transition: 0.3s;
+}

@@ -1,0 +1,94 @@
+.default {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    .input-label {
+        margin-bottom: 5px;
+        font-size: 12px;
+
+        color: var(--input-text-color);
+    }
+
+    .input-field {
+        width: 100%;
+        padding: 10px;
+        border-radius: 20px;
+        background-color: var(--input-bg);
+        border: 1px solid var(--input-border);
+        font-size: 14px;
+        transition: border-color 0.3s;
+        color: var(--input-text-color);
+
+        &:focus {
+            outline: none;
+            border-color: var(--input-focus-border);
+        }
+
+        &:disabled {
+            background-color: var(--input-disabled-bg);
+            cursor: not-allowed;
+        }
+
+        &.input-error {
+            border-color: var(--input-error-border);
+        }
+    }
+
+    .input-error-message {
+        margin-top: 10px;
+        font-size: 12px;
+        color: var(--input-error-text);
+    }
+}
+
+.special {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0;
+    .input-label {
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--input-text-color);
+    }
+
+    .input-field {
+        width: 100%;
+        padding: 10px;
+        border-radius: 20px;
+        background-color: var(--input-bg-spec);
+        border: 1px solid transparent;
+        font-size: 16px;
+        transition: border-color 0.3s;
+        color: var(--input-text-color);
+
+        &:focus {
+            outline: none;
+            border-color: var(--input-focus-border);
+        }
+
+        &:disabled {
+            background-color: var(--input-disabled-bg);
+            cursor: not-allowed;
+        }
+
+        &.input-error {
+            border-color: var(--input-error-border);
+        }
+    }
+
+    .input-error-message {
+        margin-top: 10px;
+        font-size: 12px;
+        color: var(--input-error-text);
+    }
+}
