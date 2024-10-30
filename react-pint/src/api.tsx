@@ -34,7 +34,7 @@ export const yourLoginFunction = async (
         );
 
         if (!user) {
-            return false; // Return false for failed login
+            return false;
         }
 
         localStorage.setItem("token", user.token);
@@ -72,18 +72,16 @@ export const yourRegisterFunction = async (
         const data = await response.json();
         console.log("Ответ сервера:", data);
 
-        return true; // Успех
+        return true;
     } catch (error) {
         console.error("Ошибка при регистрации:", error);
-        return false; // Ошибка
+        return false;
     }
 };
 
 export const uploadFile = async (file: File): Promise<string> => {
-    // Simulate a successful file upload by returning a mock URL
     return new Promise((resolve) => {
         const mockUrl = `http://localhost:3001/uploads/${file.name}`;
-        // Mock a delay to simulate server response
         setTimeout(() => {
             resolve(mockUrl);
         }, 1000);

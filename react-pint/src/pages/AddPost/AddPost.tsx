@@ -90,7 +90,7 @@ const AddPost: React.FC<AddPostProps> = ({ onAddPost }) => {
 
     useEffect(() => {
         const isFormValid =
-            postTitle.trim() !== "" && postBoard.trim() !== "" && file !== null; // Tags can be optional, adjust as needed
+            postTitle.trim() !== "" && postBoard.trim() !== "" && file !== null;
         setIsButtonDisabled(!isFormValid);
     }, [postTitle, postBoard, file]);
 
@@ -176,14 +176,14 @@ const AddPost: React.FC<AddPostProps> = ({ onAddPost }) => {
                                     type="text"
                                     placeholder="Добавьте тег"
                                     name="tag-you-card"
-                                    value={postTags.join(", ")} // Join tags for input
+                                    value={postTags.join(", ")}
                                     onChange={(e) =>
                                         setPostTags(
                                             e.target.value
                                                 .split(",")
                                                 .map((tag) => tag.trim())
                                         )
-                                    } // Split into array
+                                    }
                                 />
                                 <Button
                                     size="small-s"

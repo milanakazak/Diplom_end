@@ -41,10 +41,10 @@ const UserProfilePage = () => {
             email: editableEmail,
         };
 
-        dispatch(updateUserProfile(updatedProfile)); // Implement this in your authSlice
+        dispatch(updateUserProfile(updatedProfile));
 
         localStorage.setItem("userProfile", JSON.stringify(updatedProfile));
-        setEditMode(false); // Exit edit mode
+        setEditMode(false);
     };
 
     return (

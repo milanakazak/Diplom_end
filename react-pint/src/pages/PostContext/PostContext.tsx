@@ -4,7 +4,7 @@ import { Post } from "../../store/postSlice";
 interface PostsContextType {
     posts: Post[];
     setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
-    addPost: (post: Post) => void; // Add addPost function to context
+    addPost: (post: Post) => void;
 }
 
 const PostsContext = createContext<PostsContextType | undefined>(undefined);
@@ -29,7 +29,6 @@ export const PostsProvider: React.FC<{ children: React.ReactNode }> = ({
                 setPosts(data);
             } catch (err) {
                 console.error(err);
-                // Handle error if needed
             }
         };
 
