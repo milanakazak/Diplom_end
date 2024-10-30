@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import styles from "./styles.module.scss";
 import { updateUserProfile } from "../../store/authSlice";
 import UserPosts from "../../component/UserPosts/UserPosts";
+import ThemeToggle from "../../component/ThemeToogle/ThemeToogle";
 
 const UserProfilePage = () => {
     const [activeTab, setActiveTab] = useState("created");
@@ -49,6 +50,9 @@ const UserProfilePage = () => {
     return (
         <div className={styles["user-profile"]}>
             <div className={styles["user-profile-wrap"]}>
+                <div className={styles.theme}>
+                    <ThemeToggle />
+                </div>
                 <div className={styles["user-profile-info"]}>
                     <div className={styles.userInfo}>
                         <div className={styles.userInfoAva}>{initials}</div>

@@ -127,7 +127,7 @@ const HeaderSign = () => {
             <div className={styles["header-wrap"]}>
                 <div className={styles["set-pinter"]}>
                     <div className={styles.logo}>
-                        <a href="../../index.html">
+                        <a href="#">
                             <FontAwesomeIcon
                                 icon={faPinterest}
                                 className={styles.faPinterest}

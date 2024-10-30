@@ -13,6 +13,8 @@ import { PostsProvider } from "./pages/PostContext/PostContext";
 import PostDetailPage from "./pages/PostDetailPage/PostDetailPage";
 import { authenticateUser, logoutUser } from "./store/authSlice";
 import UserProfilePage from "./pages/UserProfilePage/UserProfilePage";
+import SearchPage from "./pages/SearchPage/SearchPage";
+import MessagePage from "./pages/MessagePage/MessagePage";
 
 interface HeaderWithSignProps {
     isAuthenticated: boolean;
@@ -129,6 +131,16 @@ function App() {
                     />
                     <Route path="/post/:id" element={<PostDetailPage />} />
                     <Route path="/profile" element={<UserProfilePage />} />
+                    <Route
+                        path="/searchpage"
+                        element={
+                            <SearchPage
+                                setResults={setSearchResults}
+                                posts={posts}
+                            />
+                        }
+                    />
+                    <Route path="/message" element={<MessagePage />} />
                 </Routes>
             </div>
         </PostsProvider>

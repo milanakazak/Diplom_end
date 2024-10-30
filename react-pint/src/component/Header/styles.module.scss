@@ -102,6 +102,9 @@
         color: #767676;
     }
 }
+.header-wrap-mobile {
+    display: none;
+}
 
 .menu {
     cursor: pointer;
@@ -146,5 +149,110 @@
     &:hover {
         background-color: var(--bg-theme);
         transition: 0.3s;
+    }
+}
+
+@media (max-width: 1100px) {
+    .header {
+        padding: 15px 30px;
+    }
+    .set-pinter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 250px;
+    }
+
+    .logo {
+        width: 30px;
+        height: 30px;
+    }
+    .faPinterest {
+        font-size: 22px;
+    }
+    .message {
+        width: 30px;
+        height: 30px;
+        padding: 0 10px;
+        .faCommentDots {
+            line-height: 22px;
+            font-size: 22px;
+        }
+        .message-modal-list {
+            top: 50px;
+        }
+    }
+
+    .profile {
+        width: 30px;
+        height: 30px;
+        padding: 0 10px;
+        .faUser {
+            line-height: 22px;
+            font-size: 22px;
+        }
+    }
+
+    .menu {
+        width: 30px;
+        height: 30px;
+        padding: 0 10px;
+        .faAngleDown {
+            font-size: 18px;
+        }
+    }
+    .theme {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 796px) {
+    .header {
+        width: 100%;
+        position: fixed;
+        z-index: 3;
+        left: 0;
+        top: auto;
+        bottom: 0;
+        background-color: var(--bg-color);
+        padding: 16px 50px;
+    }
+    .header-wrap-mobile {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+    }
+
+    .header-wrap {
+        display: none;
+    }
+
+    .set-pinter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .faHome {
+        line-height: 24px;
+        font-size: 24px;
+    }
+    .faPlus {
+        line-height: 24px;
+        font-size: 24px;
+    }
+
+    .faCommentDots {
+        line-height: 24px;
+        font-size: 24px;
+    }
+
+    .faUser {
+        line-height: 24px;
+        font-size: 24px;
     }
 }

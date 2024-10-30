@@ -64,13 +64,14 @@
         .main-card-inside-up-wrap {
             display: flex;
             align-items: center;
-            gap: 80px;
+            gap: 30px;
         }
         .save-desk {
             display: flex;
             align-items: center;
             gap: 5px;
-            color: var(--color-button-text);
+            color: #fff;
+            cursor: pointer;
             .faAngleDown {
                 font-size: 20px;
                 margin-right: 5px;

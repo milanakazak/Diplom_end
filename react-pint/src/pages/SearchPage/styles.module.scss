@@ -1,0 +1,33 @@
+.search-wrap {
+    min-height: 100vh;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    .searchWrapM {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px 20px;
+        height: 48px;
+        background-color: var(--input-bg-spec);
+        border-radius: 40px;
+        margin: 0 8px;
+    }
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.faMagnifyingGlass {
+    font-size: 16px;
+    color: #767676;
+    padding-right: 5px;
+}
+.searchWrapMob {
+    display: none;
+}
+.results-wrap {
+    padding-top: 20px;
+    column-count: 2;
+}

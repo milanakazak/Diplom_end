@@ -8,10 +8,10 @@ import Button from "../Button/Button";
 import { FC } from "react";
 import { Post } from "../../store/postSlice";
 import { selectPost } from "../../store/postDetailSlice";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
-import { showContextMenu } from "../../store/contextMenuSlice";
-import { addSavedCard } from "../../store/savedCardsSlice";
+import { showContextMenu, showDeskModal } from "../../store/contextMenuSlice";
+import { addSavedCard, removeSavedCard } from "../../store/savedCardsSlice";
 
 interface CardProps {
     post: Post;
@@ -21,11 +21,20 @@ const Card: FC<CardProps> = ({ post }) => {
     const { imageUrl, title, author, authorAvatarUrl } = post;
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const savedCards = useAppSelector((state) => state.savedCards.savedCards);
 
     const authorName = typeof author === "string" ? author : author.username;
 
-    const handleSaveCard = () => {
-        dispatch(addSavedCard(post));
+    const handleSaveCard = (event: React.MouseEvent) => {
+        event.stopPropagation();
+        const isSaved = savedCards.some(
+            (savedCard) => savedCard.id === post.id
+        );
+        if (isSaved) {
+            dispatch(removeSavedCard(post.id));
+        } else {
+            dispatch(addSavedCard(post));
+        }
     };
 
     const initials = authorName
@@ -54,6 +63,21 @@ const Card: FC<CardProps> = ({ post }) => {
         );
     };
 
+    const handleDeskToggle = (event: React.MouseEvent) => {
+        event.stopPropagation();
+        const { clientX, clientY } = event;
+        const offsetX = 0;
+        const offsetY = 0;
+
+        dispatch(
+            showDeskModal({
+                x: clientX - offsetX,
+                y: clientY - offsetY,
+                postId: post.id,
+            })
+        );
+    };
+
     return (
         <div className={styles["main-card"]} onClick={handleClick}>
             <div className={styles["main-card-img-wrap"]}>
@@ -75,15 +99,22 @@ const Card: FC<CardProps> = ({ post }) => {
                 <div className={styles["main-card-inside-wrap"]}>
                     <div className={styles["main-card-inside-up"]}>
                         <div className={styles["main-card-inside-up-wrap"]}>
-                            <div className={styles["save-desk"]}>
-                                <span>DESK</span>
+                            <div
+                                className={styles["save-desk"]}
+                                onClick={handleDeskToggle}
+                            >
+                                <span>Профиль</span>
                                 <FontAwesomeIcon
                                     icon={faAngleDown}
                                     className={styles.faAngleDown}
                                 />
                             </div>
                             <Button size="large" onClick={handleSaveCard}>
-                                Сохранить
+                                {savedCards.some(
+                                    (savedPost) => savedPost.id === post.id
+                                )
+                                    ? "Удалить"
+                                    : "Сохранить"}
                             </Button>
                         </div>
                     </div>

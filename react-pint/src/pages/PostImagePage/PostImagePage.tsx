@@ -3,8 +3,9 @@ import Card from "../../component/Card/Card";
 import styles from "./styles.module.scss";
 import { Post } from "../../store/postSlice";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { hideContextMenu } from "../../store/contextMenuSlice";
+import { hideContextMenu, hideDeskModal } from "../../store/contextMenuSlice";
 import ContextCard from "../../component/ContextCard/ContextCard";
+import ModalDesk from "../../component/ModalDesk/ModalDesk";
 
 interface PostImagePageProps {
     posts: Post[];
@@ -17,6 +18,7 @@ const PostImagePage: FC<PostImagePageProps> = ({ posts }) => {
         visible,
         position,
         postId: contextPostId,
+        isDeskModalOpen,
     } = useAppSelector((state) => state.contextMenu);
     const [visiblePosts, setVisiblePosts] = useState(posts);
 
@@ -34,14 +36,15 @@ const PostImagePage: FC<PostImagePageProps> = ({ posts }) => {
         ) {
             dispatch(hideContextMenu());
         }
+        if (isDeskModalOpen) {
+            dispatch(hideDeskModal());
+        }
     };
 
     useEffect(() => {
         if (visible) {
-            // Attach listener when menu is visible
             document.addEventListener("mousedown", handleClickOutside);
         } else {
-            // Remove listener when menu is hidden
             document.removeEventListener("mousedown", handleClickOutside);
         }
         return () => {
@@ -75,9 +78,21 @@ const PostImagePage: FC<PostImagePageProps> = ({ posts }) => {
                 >
                     <ContextCard
                         onClose={() => dispatch(hideContextMenu())}
-                        onHidePin={handleHidePin} // Pass the handler here
-                        postId={contextPostId} // Pass the selected post ID here
+                        onHidePin={handleHidePin}
+                        postId={contextPostId}
                     />
+                </div>
+            )}
+            {isDeskModalOpen && position && (
+                <div
+                    style={{
+                        position: "fixed",
+                        left: position.x,
+                        top: position.y,
+                        zIndex: 1000,
+                    }}
+                >
+                    <ModalDesk />
                 </div>
             )}
         </div>

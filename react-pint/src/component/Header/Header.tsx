@@ -4,6 +4,8 @@ import styles from "./styles.module.scss";
 import {
     faAngleDown,
     faCommentDots,
+    faHome,
+    faPlus,
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button/Button";
@@ -81,8 +83,13 @@ const Header: FC<HeaderProps> = ({
         navigate("/profile");
     };
 
+    const handleCreateClickMessage = () => {
+        navigate("/message");
+    };
+
     const isHomePage = location.pathname === "/postimg";
     const isAddPostPage = location.pathname === "/addpost";
+    const isMessagePage = location.pathname === "/message";
 
     return (
         <header className={styles.header}>
@@ -112,7 +119,6 @@ const Header: FC<HeaderProps> = ({
                     </Button>
                 </div>
                 <Search setResults={setSearchResults} posts={posts} />
-
                 <div className={styles["info-for-you"]}>
                     <div
                         className={styles.message}
@@ -155,6 +161,53 @@ const Header: FC<HeaderProps> = ({
                         )}
                     </div>
                 </div>
+            </div>
+
+            <div className={styles["header-wrap-mobile"]}>
+                <div className={styles["set-pinter"]}>
+                    <Button
+                        size="large"
+                        onClick={handleCreateClickMain}
+                        state={isHomePage ? "active" : "inactive"}
+                    >
+                        <FontAwesomeIcon
+                            icon={faHome}
+                            className={styles.faHome}
+                        />
+                    </Button>
+                    <Search setResults={setSearchResults} posts={posts} />
+                    <Button
+                        size="large"
+                        onClick={handleCreateClickAddPost}
+                        state={isAddPostPage ? "active" : "inactive"}
+                    >
+                        <FontAwesomeIcon
+                            icon={faPlus}
+                            className={styles.faPlus}
+                        />
+                    </Button>
+                    <Button
+                        size="large"
+                        onClick={handleCreateClickMessage}
+                        state={isMessagePage ? "active" : "inactive"}
+                    >
+                        <FontAwesomeIcon
+                            icon={faCommentDots}
+                            className={styles.faCommentDots}
+                        />
+                        {isMessageOpen && (
+                            <div className={styles["message-modal-list"]}>
+                                <Message />
+                            </div>
+                        )}
+                    </Button>
+                    <Button size="large" onClick={handleProfile}>
+                        <FontAwesomeIcon
+                            icon={faUser}
+                            className={styles.faUser}
+                        />
+                    </Button>
+                </div>{" "}
             </div>
         </header>
     );

@@ -12,7 +12,7 @@ import {
 import styles from "./styles.module.scss";
 import Button from "../../component/Button/Button";
 import { addComment, fetchComments } from "../../store/commentSlice";
-import { addSavedCard } from "../../store/savedCardsSlice";
+import { addSavedCard, removeSavedCard } from "../../store/savedCardsSlice";
 
 const PostDetailPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -22,19 +22,12 @@ const PostDetailPage = () => {
     const comments = useAppSelector((state) => state.comments.comments);
     const posts = useAppSelector((state) => state.posts.posts);
     const currentUser = useAppSelector((state) => state.auth.username);
+    const savedCards = useAppSelector((state) => state.savedCards.savedCards);
 
     const post = posts.find((p) => p.id === id);
     const filteredComments = comments.filter(
         (comment) => comment.postId === id
     );
-
-    const handleSaveCard = () => {
-        if (post) {
-            dispatch(addSavedCard(post));
-            setSuccessMessage("Пост успешно сохранен!");
-            setTimeout(() => setSuccessMessage(""), 3000);
-        }
-    };
 
     useEffect(() => {
         const loadPosts = async () => {
@@ -53,6 +46,20 @@ const PostDetailPage = () => {
     if (!post || typeof post.likes !== "number") {
         return <p>Ошибка: Пост не найден или не корректные данные</p>;
     }
+
+    const handleSaveCard = (event: React.MouseEvent) => {
+        event.stopPropagation();
+        const isSaved = savedCards.some(
+            (savedCard) => savedCard.id === post?.id
+        );
+        if (isSaved) {
+            dispatch(removeSavedCard(post.id));
+        } else {
+            dispatch(addSavedCard(post));
+            setSuccessMessage("Пост успешно сохранен!");
+            setTimeout(() => setSuccessMessage(""), 3000);
+        }
+    };
 
     const {
         title,
@@ -158,7 +165,12 @@ const PostDetailPage = () => {
                                         size="medium-s"
                                         onClick={handleSaveCard}
                                     >
-                                        Сохранить
+                                        {savedCards.some(
+                                            (savedPost) =>
+                                                savedPost.id === post.id
+                                        )
+                                            ? "Удалить"
+                                            : "Сохранить"}
                                     </Button>
                                     {successMessage && (
                                         <div className={styles.successMessage}>

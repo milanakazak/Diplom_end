@@ -1,0 +1,89 @@
+.modalDesk {
+    width: 200px;
+    background-color: var(--bg-color);
+    border-radius: 15px;
+    .modalDeskWrap {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+
+        .modalDeskWr {
+            position: relative;
+            display: flex;
+            justify-content: center;
+
+            align-items: center;
+
+            width: 100%;
+            & button {
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                .faXmark {
+                    font-size: 24px;
+                    color: var(--color-opt-card);
+                    transition: 0.3s;
+                }
+            }
+            & h3 {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+        }
+        .listDesk {
+            margin-bottom: 10px;
+
+            display: flex;
+            gap: 10px;
+            width: 100%;
+
+            .itemDesk {
+                padding: 5px;
+                border-radius: 50px;
+                width: 100%;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                &:hover {
+                    background: var(--bg-color-button-hover);
+                    border: none;
+                    transition: 0.3s;
+                }
+            }
+        }
+        .lineDesk {
+            padding: 5px;
+            border-radius: 50px;
+            width: 100%;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            &:hover {
+                background: var(--bg-color-button-hover);
+                border: none;
+                transition: 0.3s;
+            }
+        }
+        .iconDesk {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--input-border);
+            border-radius: 50%;
+            .faPlus {
+                font-size: 20px;
+            }
+            .faClockRotateLeft {
+                font-size: 20px;
+            }
+        }
+        .textDesk {
+            font-size: 16px;
+        }
+    }
+}

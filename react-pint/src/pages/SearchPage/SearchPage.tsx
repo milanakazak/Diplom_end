@@ -1,25 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "../Button/Button";
-import Input from "../Input/Input";
+import Button from "../../component/Button/Button";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
+import Input from "../../component/Input/Input";
 import { Post } from "../../store/postSlice";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Card from "../../component/Card/Card";
 
 interface SearchProps {
     setResults: React.Dispatch<React.SetStateAction<Post[]>>;
     posts: Post[];
 }
 
-const Search: React.FC<SearchProps> = ({ setResults, posts }) => {
+const SearchPage: React.FC<SearchProps> = ({ setResults, posts }) => {
     const [query, setQuery] = useState<string>("");
-    const navigate = useNavigate();
-    const isSearchPage = location.pathname === "/searchpage";
-
-    const handleCreateClickSearchPage = () => {
-        navigate("/searchpage");
-    };
+    const [filteredResults, setFilteredResults] = useState<Post[]>([]);
 
     useEffect(() => {
         if (!posts || posts.length === 0) {
@@ -32,7 +27,7 @@ const Search: React.FC<SearchProps> = ({ setResults, posts }) => {
             return;
         }
 
-        const filteredResults = posts.filter((post) => {
+        const results = posts.filter((post) => {
             const lowerCaseQuery = query.toLowerCase();
             return (
                 post.title.toLowerCase().includes(lowerCaseQuery) ||
@@ -45,27 +40,15 @@ const Search: React.FC<SearchProps> = ({ setResults, posts }) => {
             );
         });
 
-        setResults(filteredResults);
+        setFilteredResults(results);
+        setResults(results);
     }, [query, posts, setResults]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setQuery(event.target.value);
     };
-
     return (
         <div className={styles["search-wrap"]}>
-            <div className={styles.searchWrapMob}>
-                <Button
-                    size="large"
-                    onClick={handleCreateClickSearchPage}
-                    state={isSearchPage ? "active" : "inactive"}
-                >
-                    <FontAwesomeIcon
-                        className={styles.faMagnifyingGLass}
-                        icon={faMagnifyingGlass}
-                    />
-                </Button>
-            </div>
             <div className={styles.searchWrapM}>
                 <Button size="medium">
                     <FontAwesomeIcon
@@ -81,8 +64,17 @@ const Search: React.FC<SearchProps> = ({ setResults, posts }) => {
                     onChange={handleInputChange}
                 />
             </div>
+            <div className={styles["results-wrap"]}>
+                {filteredResults.length > 0 ? (
+                    filteredResults.map((card) => (
+                        <Card key={card.id} post={card} />
+                    ))
+                ) : (
+                    <p>Результатов не найдено</p>
+                )}
+            </div>
         </div>
     );
 };
 
-export default Search;
+export default SearchPage;
