@@ -17,8 +17,10 @@ import { addSavedCard, removeSavedCard } from "../../store/savedCardsSlice";
 const PostDetailPage = () => {
     const { id } = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
+
     const [commentText, setCommentText] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+
     const comments = useAppSelector((state) => state.comments.comments);
     const posts = useAppSelector((state) => state.posts.posts);
     const currentUser = useAppSelector((state) => state.auth.username);

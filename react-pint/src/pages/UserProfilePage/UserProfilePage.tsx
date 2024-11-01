@@ -24,7 +24,8 @@ const UserProfilePage = () => {
         setEditableEmail(email);
     }, [username, email]);
 
-    if (!username) return <p>No user data available</p>;
+    if (!username) return <p>Данные о пользователе отсутствуют</p>;
+
     const names = username.split(" ");
     const initials = names.reduce((acc, item) => {
         acc += item[0]?.toUpperCase() ?? "";

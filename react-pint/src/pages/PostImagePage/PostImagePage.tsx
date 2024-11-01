@@ -54,7 +54,7 @@ const PostImagePage: FC<PostImagePageProps> = ({ posts }) => {
     }, [visible, dispatch]);
 
     if (!posts || posts.length === 0) {
-        return <div>No posts available.</div>;
+        return <div>Нет доступных пинов</div>;
     }
 
     return (

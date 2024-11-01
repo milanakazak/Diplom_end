@@ -23,7 +23,7 @@ const Search: React.FC<SearchProps> = ({ setResults, posts }) => {
 
     useEffect(() => {
         if (!posts || posts.length === 0) {
-            console.log("No posts");
+            console.log("Нет пинов");
             return;
         }
 

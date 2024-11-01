@@ -8,6 +8,7 @@ interface UserPostsProps {
 
 const UserPosts: React.FC<UserPostsProps> = ({ username }) => {
     const posts = useAppSelector((state) => state.posts.posts);
+
     const userPosts = posts.filter((post: Post) => {
         if (typeof post.author === "string") {
             return post.author === username;
@@ -26,7 +27,7 @@ const UserPosts: React.FC<UserPostsProps> = ({ username }) => {
                     </div>
                 ))
             ) : (
-                <p>Пользователь еще не добавил посты.</p>
+                <p>Вы еще не добавили пины.</p>
             )}
         </div>
     );

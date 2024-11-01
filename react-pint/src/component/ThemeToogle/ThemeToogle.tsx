@@ -7,6 +7,7 @@ import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 const ThemeToggle = () => {
     const dispatch = useAppDispatch();
     const isDarkMode = useAppSelector((state) => state.theme.isDarkMode);
+
     const handleToggle = () => {
         dispatch(toogleTheme());
     };

@@ -9,9 +9,11 @@ import { useNavigate } from "react-router-dom";
 const Main = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+
     const registrationStatus = useAppSelector(
         (state) => state.auth.registrationStatus
     );
+
     const handleRegisterSubmit = async (formData: FormState) => {
         try {
             const success = await yourRegisterFunction(formData);
