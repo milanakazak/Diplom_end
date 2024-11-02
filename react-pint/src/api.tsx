@@ -11,7 +11,7 @@ export interface LoginResponse {
     token: string;
 }
 
-export const yourLoginFunction = async (
+export const loginFunction = async (
     formData: FormState
 ): Promise<LoginResponse | boolean> => {
     try {
@@ -50,7 +50,7 @@ export const yourLoginFunction = async (
     }
 };
 
-export const yourRegisterFunction = async (
+export const registerFunction = async (
     formData: FormState
 ): Promise<boolean> => {
     try {

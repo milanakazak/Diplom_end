@@ -15,8 +15,8 @@ import { useEffect, useRef } from "react";
 import {
     FormState,
     LoginResponse,
-    yourLoginFunction,
-    yourRegisterFunction,
+    loginFunction,
+    registerFunction,
 } from "../../api";
 import { authenticateUser, setRegistrationStatus } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
@@ -45,7 +45,7 @@ const HeaderSign = () => {
     }, [dispatch]);
 
     const handleLoginSubmit = async (formData: FormState) => {
-        const result = await yourLoginFunction(formData);
+        const result = await loginFunction(formData);
         if (typeof result === "object" && result !== null) {
             const { username, email } = result as LoginResponse;
             dispatch(authenticateUser({ username, email }));
@@ -58,7 +58,7 @@ const HeaderSign = () => {
 
     const handleRegisterSubmit = async (formData: FormState) => {
         try {
-            const success = await yourRegisterFunction(formData);
+            const success = await registerFunction(formData);
             if (success) {
                 dispatch(
                     authenticateUser({

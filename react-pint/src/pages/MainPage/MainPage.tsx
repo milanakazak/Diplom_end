@@ -3,7 +3,7 @@ import RegistrationForm from "../../component/RegistrationForm/RegistrationForm"
 import styles from "./styles.module.scss";
 import { authenticateUser, setRegistrationStatus } from "../../store/authSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { FormState, yourRegisterFunction } from "../../api";
+import { FormState, registerFunction } from "../../api";
 import { useNavigate } from "react-router-dom";
 
 const Main = () => {
@@ -16,7 +16,7 @@ const Main = () => {
 
     const handleRegisterSubmit = async (formData: FormState) => {
         try {
-            const success = await yourRegisterFunction(formData);
+            const success = await registerFunction(formData);
             if (success) {
                 dispatch(
                     authenticateUser({
